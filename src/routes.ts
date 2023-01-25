@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import { FastifyInstance } from "fastify"
 import { z } from 'zod';
 import { prisma } from "./lib/prisma"
+import { DayHabit } from '@prisma/client';
 
 export async function appRoutes(app: FastifyInstance) {
     app.post('/habits', async (request) => {
@@ -64,7 +65,7 @@ export async function appRoutes(app: FastifyInstance) {
             }
         })
 
-        const completedHabits = day?.dayHabits.map(dayHabit => {
+        const completedHabits = day?.dayHabits.map((dayHabit: DayHabit) => {
             return dayHabit.habit_id
         }) ?? []
 
