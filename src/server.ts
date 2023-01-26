@@ -9,7 +9,7 @@ async function server() {
     app.register(appRoutes)
 
     await app.listen({ port: Number(process.env.PORT) || 3333 }).then(() => {
-        console.log('HTTP Server Running')
+        console.log('HTTP Server Running ', process.env.PORT)
     })
 }
 
